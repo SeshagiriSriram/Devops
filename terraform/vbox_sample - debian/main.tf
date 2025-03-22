@@ -16,8 +16,7 @@ resource "virtualbox_vm" "vm1" {
   image  = "https://app.vagrantup.com/shekeriev/boxes/debian-11/versions/0.2/providers/virtualbox.box"
   cpus      = 1
   memory    = "512 mib"
-  user_data = file("${path.module}/user_data")
-
+  
   network_adapter {
     type           = "hostonly"
     device         = "IntelPro1000MTDesktop"

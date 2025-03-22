@@ -5,7 +5,6 @@ minikube start --vm-driver=docker --container-runtime=containerd --memory 6144 -
 minikube addons enable metrics-server
 minikube addons enable default-storageclass
 minikube addons enable storage-provisioner
-
 # a more
 #minikube start --vm-driver=docker --container-runtime=containerd --mount-string="/home/demouser:/data" --mount  --memory 10000 --cpus 4
 #minikube addons enable metrics-server

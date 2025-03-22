@@ -5,6 +5,25 @@ Adapt as neccessary
 
 It also contains scripts for some docker and vagrant/virtual box demos
 
+# Change History
+* March 22 2025 - Added support for some sample files used in Jenkins pipelines 
+* March 22 2025 - Added support to uninstall prometheus and grafana on Minikube 
+* March 22 2025 - Removed Presentations 
+* Jan 31 2025 - Added Support for running minikube under rootless docker.  
+* Jan 31 2025 - Added support for Rootless Docker installation - USE AT YOUR OWN RISK
+* Jan 25 2025 - Added Support for creating a Debian Virtual Box using Terraform
+
+# TODO 
+* clean up folder structure and add details on each sub folder
+* Add Networking and Installation Notes for
+  
+  - Windows only 
+  - Windows + WSL2 + Ubuntu 
+  - Docker installation - With and without WSL integration 
+  - Bridging networks for multiple use cases
+* Support for Minikube Storage classes and network proxies 
+* Support for Prometheus with NodePort instead of depending on minikube service hacks 
+  
 # CAUTION
 I am not adding any sample files for resolv.conf or WSL Conf
 A sample file will look like this: 
@@ -46,11 +65,6 @@ EOF
 sudo systemctl daemon-reload
 ```
 Install minikube as normal. see the code in startminikube.sh and adapt as needed.
-
-# Change History
-Jan 31 2025 - Added Support for running minikube under rootless docker.  
-Jan 31 2025 - Added support for Rootless Docker installation - USE AT YOUR OWN RISK
-Jan 25 2025 - Added Support for creating a Debian Virtual Box using Terraform
 
 # SW
 1. WSL2 Ubuntu 22/24 instance (NB: DOcker Desktop integration is turned off for same)
@@ -94,18 +108,17 @@ Jan 25 2025 - Added Support for creating a Debian Virtual Box using Terraform
 
 ## Folder Structure
 Top level folder structure 
-.
-├── cheatsheets						Contains Cheay Sheets for git, Docker, Kubernetes
-├── docker						Code related to Docker	
-├── dockerfiles_ansible					Using DOcker and Ansible together	
-├── kubernetes						Kubernetes code	
-├── presentations					presentations
-├── SampleCodes						Sample codes that can be resused in Jenkins jobs and pipelines
-├── terraform						Code related to Terraform
-├── vagrant_ansible					Using ansible and vagrant together
-└── vagrant-kubeadm-kubernetes				Provisisoning Kubernetes with 1 master and 2 worker nodes	
+* cheatsheets						Contains Cheay Sheets for git, Docker, Kubernetes
 
+* docker						Code related to Docker	
+*  dockerfiles_ansible					Using DOcker and Ansible together	
+* kubernetes						Kubernetes code	
+*  SampleCodes						Sample codes that can be resused in Jenkins jobs and pipelines
+*  terraform						Code related to Terraform
+*  vagrant_ansible					Using ansible and vagrant together
+* vagrant-kubeadm-kubernetes				Provisisoning Kubernetes with 1 master and 2 worker nodes	
 
+In some detail 
 1. docker
     1.  jenkins - contains instructions on how to build and run jenkins as a docker image
     2.  lamp-dockercompose - A sample LAMP application using docker-compose
@@ -118,12 +131,14 @@ Top level folder structure
           1. yaml - raw deployment using yml/kustomization. There are sub folders here for deploying apache, phpmyadmin and mysql into kubernetes
           2. helm - install apps using helm 
      2. logging - scripts and yml files to install prometheus/grafana/ELK on minikube
-4. presentations 
-5. vagrant_ansible - Contains information on starting Ansible master and nodes on Separate Oracle Virtual Box instances
-6. vagrant_kubeadm-kubernete - Build a master/2 node Kubernetes cluster using Oracle Virtual Box 
+-    - elk-helm - install ELK with helm charts
+-    - prometheusandGrafana - Install Prometheus and Grafana with Helm 
 
-7. cheatsheet  
-8. SampleCodes 
-8. terraform  
+4. vagrant_ansible - Contains information on starting Ansible master and nodes on Separate Oracle Virtual Box instances
+5. vagrant_kubeadm-kubernete - Build a master/2 node Kubernetes cluster using Oracle Virtual Box 
+
+6. cheatsheet  
+7. SampleCodes 
+8.  terraform  
 
 		
