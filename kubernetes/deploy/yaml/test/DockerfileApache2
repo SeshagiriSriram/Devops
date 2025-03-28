@@ -1,0 +1,3 @@
+FROM httpd
+EXPOSE 80
+USER root

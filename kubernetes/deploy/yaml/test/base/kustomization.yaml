@@ -1,0 +1,3 @@
+resources:
+  - test_dep.yaml
+  - test_svc.yaml

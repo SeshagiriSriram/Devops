@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: test
+    tier: frontend
+  type: LoadBalancer
