@@ -4,6 +4,8 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+# plan files assumed to be *plan* and no other code will use this :-) 
+*plan* 
 
 #user_data
 user_data

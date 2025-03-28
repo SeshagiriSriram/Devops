@@ -1,0 +1,14 @@
+---
+- hosts: 'all'
+  become: true
+
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        update_cache: true
+        state: latest
+
+    - name: start apache2
+      ansible.builtin.shell:
+        cmd: service apache2 start 
