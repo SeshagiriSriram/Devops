@@ -10,9 +10,9 @@ if [ -f /usr/bin/docker ]; then
 else
 	echo "Docker not installed moving on" 	
 	# install docker.. 
-	#./install_docker.sh 
+	./install_docker.sh 
 	# Should I install docker-compose? I need a flag for this 
-	INSTALL_DOCKER_COMPOSE=1 
+	export INSTALL_DOCKER_COMPOSE=0 
 fi
 # now we have a root docker installed 
 export FORCE_ROOTLESS_INSTALL=1
@@ -28,7 +28,7 @@ sudo loginctl enable-linger $(whoami)
 sudo usermod -aG docker $USER 
 if [ ${INSTALL_DOCKER_COMPOSE} -eq 1 ]; then 
     ./install_dockercompose.sh 
-	# have to do this since rootless kit does not have it... 
+# have to do this since rootless kit does not have it... 
 fi 
 #if [ -f /etc/wsl.conf ]; then 
 	#sudo cp wslsample.conf /etc/wsl.conf 
