@@ -3,6 +3,11 @@
   become: true
 
   tasks:
+    - name:  Stop and Disable apache
+      service:
+        name: apache2
+        state: stopped
+        enabled: false 
     - name: Remove apache2
       apt:
         name: apache2

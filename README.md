@@ -38,7 +38,7 @@ In such cases, you will need to add the following to the /etc/resolv.conf file
 # add Google DNS server 
 nameserver 8.8.8.8
 ```
-In addition, for minikube to run properly in WSL2 under rootless docker, make the following changes to %USERPROFILES%\.wslconfig 
+In addition, for minikube to run properly in WSL2 under rootless docker, make the following changes to %USERPROFILE%\.wslconfig 
 
 ```
 [wsl2]

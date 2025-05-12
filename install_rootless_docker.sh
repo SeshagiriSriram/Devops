@@ -18,6 +18,8 @@ fi
 export FORCE_ROOTLESS_INSTALL=1
 # Note that this will remove docker binaries..
 curl -fsSL https://get.docker.com/rootless | sh 
+#  make a change to install rootless kit extras and then 
+# make a clean custom AppArmor and More Secure AppArmor profile 
 c=$(grep -c '^.*#ROOTLESS' $HOME/.bashrc) 
 if [ ${c} -le 0 ]; then 
 	echo "export PATH=/home/${USER}/bin:\$PATH #ROOTLESS DOCKER"  >> $HOME/.bashrc
