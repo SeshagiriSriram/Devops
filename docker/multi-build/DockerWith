@@ -3,20 +3,17 @@ FROM golang:1.23
 WORKDIR /src
 
 # Create a file called main.go 
-COPY <<EOF ./main.go
-package main
-
-import "fmt"
-
-func main() {
-  fmt.Println("hello, world")
-}
-EOF
+#COPY <<-EOF ./main.go
+#package main
+#import "fmt"
+#func main() {
+#fmt.Println("hello, world")
+#}
+#EOF
 # alternatively if you already have main.go, just do this :-) 
-# COPY ./main.go .  
+COPY ./main.go . 
 
 RUN go build -o /bin/hello ./main.go
-
 FROM scratch
 COPY --from=0 /bin/hello /bin/hello
 CMD ["/bin/hello"]
