@@ -1,9 +1,11 @@
 # Getting Started with Docker
-This has 3 parts
+This has 5 parts
 
 1. jenkins
 2. lamp-dockercompose
 3. multibuild
+4. prometheusgrafana
+5. samples 
 
 The 1st directory (jenkins) has 1 scripts
 1. install_jenkins.sh which is used to build the docker image for jenkins
@@ -26,3 +28,12 @@ where nameodDockerfile = DockerAll|DockerWith
 NB: 
 * DockerAll = no multi-stage build
 * DockerWith = with Multi-Stage build
+
+4. prometheusgrafana 
+   create and deploy prometheus and grafana with CADVISOR
+   Use Default dashboards for grafana
+
+5. Samples
+    Demomstration of multi-build (Duplicated perhaps?)
+    Simplewebapp 
+    Difference between CMD and ENTRYPoint

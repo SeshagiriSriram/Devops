@@ -43,4 +43,4 @@ spec:
       volumes:
       - name: lamp-apache-persistent-storage
         hostPath: 
-          path: /data/devops/kubernetes/deploy/yaml/apache_phpadmin_mysql/combined/base
+          path: /hostmount
