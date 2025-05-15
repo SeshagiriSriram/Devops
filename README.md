@@ -6,6 +6,7 @@ Adapt as neccessary
 It also contains scripts for some docker and vagrant/virtual box demos
 
 # Change History
+* May 15 2025 - Lots of changes - Part 1 of cleanup
 * March 22 2025 - Added support for some sample files used in Jenkins pipelines 
 * March 22 2025 - Added support to uninstall prometheus and grafana on Minikube 
 * March 22 2025 - Removed Presentations 
@@ -22,7 +23,15 @@ It also contains scripts for some docker and vagrant/virtual box demos
   - Docker installation - With and without WSL integration 
   - Bridging networks for multiple use cases
 * Support for Minikube Storage classes and network proxies 
-* Support for Prometheus with NodePort instead of depending on minikube service hacks 
+* add suport for microk8s 
+* document cleanly rooted vs rootless + 9p mounts 
+* fix known prometheus-community helm charts issue with no data appearing 
+
+# Known issues
+* Scripts for rootless docker and minikube not clean enough
+* Several hard coded and assumptions not clearly documented. 
+* Not-reusable. 
+* use of ./ in volume mounts will fail when calling from Windows with Docker Engine on (WSL2) Ubuntu
   
 # CAUTION
 I am not adding any sample files for resolv.conf or WSL Conf
