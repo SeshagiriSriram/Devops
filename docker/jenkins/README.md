@@ -1,5 +1,11 @@
 # Notes about Jenkins Install
 
+NB: You could either install jenkins using 
+
+- install_jenkins.sh 
+- just use the docker compose file e.g. __*docker compose up -d*__ 
+
+
 The Dockerfile provided is huge and needs to be trimmed out. 
 It does provide some conveniences like
 
@@ -16,4 +22,4 @@ Things that need to be done include
   - Themes... blah blah.... customizations 
 - Create SSH keys on jenkins and integrate with Github/gitlab. 
 
-Additional credential helpers are provided. A GPG2 key has to be created and initialized before **docker login** can be used securely in any pipeline.  
+Additional credential helpers are provided. A GPG2 key has to be created and initialized before **docker login** can be used securely in any pipeline.
