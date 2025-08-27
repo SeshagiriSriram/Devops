@@ -1,0 +1,7 @@
+#!/bin/bash
+# Call this script from the directory where this script is located
+# usage: ./remove.sh
+# Remove Prometheus and Grafana from the Kubernetes cluster
+helm uninstall kube-prometheus-stack prometheus-community/kube-prometheus-stack -n metrics
+helm uninstall prometheus-adapter prometheus-community/prometheus-adapter -n metrics
+kubectl delete namespace metrics
