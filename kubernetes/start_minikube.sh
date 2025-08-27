@@ -1,17 +1,32 @@
+#!/bin/bash
+set -e
+set -o pipefail		
 # Comment below line if using "rooted" docker
 #docker context use rootless 
-VM_DRIVER=${1:-"--vm-driver=docker"} 
-#For above parameter, e.g. --vm-driver=docker 
-# Adapt the below as necessary
 CLUSTERNAME=${1:-minikube} 
-MOUNTSTRING="" 
-if [ ! -z ${MOUNTDIR} ] ; then 
-	MOUNTSTRING="--mount --mount-string="\"${MOUNTDIR}:/hostmount\" 
-fi 
-#Cruel hack for now since I do not know how to escape/unescape quotes...
-#echo minikube start ${VM_DRIVER}  ${MOUNTSTRING}  --container-runtime=containerd --memory 8192  --cpus 4   > /tmp/tmp.sh 
-echo minikube start ${VM_DRIVER}  ${MOUNTSTRING}  --profile ${CLUSTERNAME} --memory 8192  --cpus 4   > /tmp/tmp.sh 
-chmod +x /tmp/tmp.sh 
-#minikube start ${VM_DRIVER}  ${MOUNTSTRING}  --memory 8192  --cpus 4   
-/tmp/tmp.sh && rm -f /tmp/tmp.sh  
+if [ "$#" -gt 0 ]; then
+  shift
+fi
+VM_DRIVER=${1:-"docker"} 
+# TODO: Check if driver is available and valid 
+VM_FLAG="--vm-driver=${VM_DRIVER}"
+
+if [ -n "${MOUNTDIR}" ]; then
+  ARGS=("--mount" "--mount-string=\"${MOUNTDIR}:/hostmount\"")
+  if [ ! -d "${MOUNTDIR}" ]; then
+  	echo "Error: Specified Mount/host directory '${MOUNTDIR}' does not exist."
+	echo "Minikube cannot be started with given mount option."
+	if [ ! -z "${IGNORE_MOUNT_ERROR:+1}" ]; then
+		echo "Continuing without mount option as IGNORE_MOUNT_ERROR is set"
+		MOUNT_FLAG="--mount=false"
+		ARGS=("${MOUNT_FLAG}")	
+		else		
+		echo "Terminating as IGNORE_MOUNT_ERROR is not set"	
+		exit 1
+    fi 
+  fi
+fi
+ARGS+=("${VM_FLAG}" "--memory" "8192" "--cpus" "4")
+minikube start "${ARGS[@]}"
+echo "Minikube started with args: ${ARGS[*]}"
 ./enable_addons.sh 
