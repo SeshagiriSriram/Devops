@@ -11,9 +11,9 @@ a. Installing HELM
 b. Installing Kubectl
 c. Stopping and Removing Minikube
 
-## Folder Structure
+## Folder Structure  
 
-```
+```bash  
 kubernetes/
 │
 ├── README.md                # This file
@@ -23,7 +23,5 @@ kubernetes/
 ├── install_kubectl.sh       # Script to install Kubectl
 ├── stop_minikube.sh         # Script to stop and remove Minikube
 ├── deploy/                  # Samples for Depoying applications
-├── logging/                 # Setting up ELK and Prometheus/Grafana in Kubernetes
-
-```
-
+├── logging/                 # Setting up ELK and Prometheus/Grafana in Kubernetes  
+```  
