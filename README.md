@@ -1,12 +1,20 @@
-# Sample Code and Presentations
-This contains the scripts for installing minikube on a WSL2 (windows 11 Home Edition) Ubuntu 22.04 LTS distro. 
-It also contains scripts for installing prometheus, Grafana and ELK stacks
-Adapt as neccessary 
+# GEtting Stanted with Docker 
 
-It also contains scripts for some docker and vagrant/virtual box demos
+This repository contains a number of scripts and code samples to get started with
 
-# Change History
-* May 15 2025 - Lots of changes - Part 1 of cleanup
+- Docker
+- Kubernetes
+- Vagrant
+- Ansible
+
+It contains scripts for installing minikube on a WSL2 (windows 11 Home Edition) Ubuntu 22.04 LTS distro. It also contains scripts for installing prometheus, Grafana and ELK stacks.It also contains scripts for some docker and vagrant/virtual box demos.
+
+> The code is provided **as-is** with no implied or specific guarantees.**Adapt as neccessary.**
+
+## Change History  
+
+- Aug 28 2025 - Changed quite a bit in **Docker** and **Kubernetes**. Many scripts (not all) have been updated for error handling and (mostly) equivalent Windows and Unix Scripts. Many READMEs updated for readbility. Presentations moved to [Materials](https://github.com/seshagirisriram/materials) repository.
+- May 15 2025 - Lots of changes - Part 1 of cleanup
 * March 22 2025 - Added support for some sample files used in Jenkins pipelines 
 * March 22 2025 - Added support to uninstall prometheus and grafana on Minikube 
 * March 22 2025 - Removed Presentations 
