@@ -15,7 +15,7 @@ kubernetes/
 
 ## Sample Dashboard
 
-A sample dashboard can be found /docker/prometheusgrafana. Before importing the JSON, make sure to change IP address to reflect the Windows server where the Windows Exporter is running - this is usually a.b.c.d:9182.
+A sample dashboard can be found under the /docker/prometheusgrafana. Before importing the JSON, make sure to change IP address to reflect the Windows server where the Windows Exporter is running - this is usually a.b.c.d:9182.
 
 - Next run the below  
 
