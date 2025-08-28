@@ -125,18 +125,17 @@ Install minikube as normal. see the code in startminikube.sh and adapt as needed
 08. Optional: make all files have an UNIX EOL ending. There are multiple options - hence not recommending anything here.
 09. As normal user, run `./install_docker.sh`
 10. Exit out of the Ubuntu window (close it ) and re-open it. You should now be able to see an empty output if you run `docker ps`
-11. If you have an error, try the below
-
-- Make yourself part of docker group
-- run `sudo usermod -aG docker <yourusername>`
-- log out of Ubuntu, log back in again and try this again
+11. If you have an error, try the below  
+    - Make yourself part of docker group
+    - run `sudo usermod -aG docker <yourusername>`
+    - log out of Ubuntu, log back in again and try this again
 
 12. To start Kubernetes, navigate to the Kubernetes folder and run:
 
-- `./install_helm.sh`
-- `./install_kubectl.sh`
-- `./install_minikube.sh`
-- `./start_minikube.sh`
+    - `./install_helm.sh`
+    - `./install_kubectl.sh`
+    - `./install_minikube.sh`
+    - `./start_minikube.sh`
 
 ## Folder Structure
 
@@ -159,18 +158,18 @@ In some detail
    4. samples - Misc. Samples for Docker
 
 2. dockerfiles_ansible - Build docker images for Ansible. Read the Instructions file found in this directory on how to use it. In particular it build the master/nodes and runs them as docker compose up -d.
+
 3. kubernetes
    1. deploy - contains sample for deploying application using
       1. yaml - raw deployment using yml/kustomization. There are sub folders here for deploying apache, phpmyadmin and mysql into kubernetes
       2. helm - install apps using helm
+
    2. logging - scripts and yml files to install prometheus/grafana/ELK on minikube
 
--
-  - elk-helm - install ELK with helm charts
--
-  - prometheusandGrafana - Install Prometheus and Grafana with Helm
+      - elk-helm - install ELK with helm charts
+      - prometheusandGrafana - Install Prometheus and Grafana with Helm  
 
-4.vagrant_ansible - Contains information on starting Ansible master and nodes on Separate Oracle Virtual Box instances
-5.vagrant_kubeadm-kubernete - Build a master/2 node Kubernetes cluster using Oracle Virtual Box  
-6.SampleCodes
-7.terraform
+4. vagrant_ansible - Contains information on starting Ansible master and nodes on Separate Oracle Virtual Box instances
+5. vagrant_kubeadm-kubernete - Build a master/2 node Kubernetes cluster using Oracle Virtual Box  
+6. SampleCodes
+7. terraform
