@@ -1,11 +1,27 @@
 # Sample ELK install (single node cluster) using YAML files  
 
-## How to
+## 🛠 Prerequisites
+
+- Kubernetes cluster access with `kubectl` configured  
+- Required YAML manifests:
+  - `es-deployment.yaml`, `es-svc.yaml`
+  - `kibana-deployment.yaml`, `kibana-svc.yaml`
+  - `logstash-deployment.yml`, `logstash-svc.yml`
+  - `app-deployment.yml`
+- Config files:
+  - `logstash.conf`
+  - `filebeat.yml`
+- Port-forwarding scripts:
+  - `esfwd.sh`, `kibfwd.sh`
+
+---
+
+## 🚀 Step-by-Step Deployment
 
 Run the following in sequence. Be sure to review yaml files before doing so. Enjoy.  
 
 ```bash
-# Create a namespace
+# reate a namespace
 kubectl create ns logging
 # Deploy ElasticSearch 
 kubectl create -f es-deployment.yaml
@@ -17,7 +33,7 @@ kubectl create -f kibana-deployment.yaml
 kubectl create -f kibana-svc.yaml
 # Minikube specific forward
 ./kibfwd.sh 2>&1 >/dev/null &
-#CreTE LOGSTASH.CONF files
+#Create LOGSTASH.CONF files
 kubectl create configmap log-manual-pipeline --from-file ./logstash.conf  -n logging
 #Deploy logstash
 kubectl create -f logstash-deployment.yml

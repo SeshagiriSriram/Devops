@@ -25,7 +25,7 @@ fi
 # Create required directories. The -p flag ensures no error if they already exist 
 mkdir -p jenkins-docker-certs
 mkdir -p jenkins-data
-export JENKINS_VERSION=2.513
+export JENKINS_VERSION=${JENKINS_VERSION:-2.516.2}
 
 # Remove existing containers if present
 if docker ps -a --format '{{.Names}}' | grep -q '^jenkins-docker$'; then

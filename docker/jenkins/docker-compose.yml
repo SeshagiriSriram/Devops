@@ -1,4 +1,3 @@
-version: "3"
 services:
   jenkins-docker:
     privileged: true
@@ -10,7 +9,7 @@ services:
       - jenkins-docker-certs:/certs/client
       - jenkins-data:/var/jenkins_home 
     ports:
-      - "2378:2376"
+      - "2376:2376"
     networks:
       jenkins:
         aliases:
@@ -19,7 +18,7 @@ services:
   jenkins-blueocean:
     environment:
       DOCKER_TLS_CERTDIR: /certs
-      JENKINS_VERSION: 2.512-jdk17
+      JENKINS_VERSION: ${JENKINS_VERSION:-2.516.2}
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
       DOCKER_TLS_VERIFY: 1
@@ -28,13 +27,13 @@ services:
     build: 
        dockerfile: Dockerfile 
        context: . 
-    image: jenkins-blueocean:${JENKINS_VERSION} 
+    image: jenkins-blueocean:${JENKINS_VERSION:-2.516.2}
     container_name: jenkins-blueocean  
     volumes:
       - jenkins-docker-certs:/certs/client:ro
       - jenkins-data:/var/jenkins_home 
-      - $HOME:/data 
-      - /tmp:/forcopy 
+      - ${HOME:-${USERPROFILE}}:/data 
+      - ${TMPDIR:-/tmp}:/forcopy 
     ports:
       - "8080:8080"
       - "50000:50000" 
@@ -47,4 +46,4 @@ networks:
     external: false 
 volumes: 
    jenkins-docker-certs: {} 
-   jenkins-data: {} 
+   jenkins-data: {}

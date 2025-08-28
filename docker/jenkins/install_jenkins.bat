@@ -36,7 +36,7 @@ if not exist jenkins-data (
     mkdir jenkins-data
 )
 
-set JENKINS_VERSION=2.513
+set JENKINS_VERSION=2.516.2
 
 REM Remove existing containers if present
 docker ps -a --format "{{.Names}}" | findstr /i "^jenkins-docker$" >nul
