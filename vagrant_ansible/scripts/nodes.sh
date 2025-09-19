@@ -1,6 +1,7 @@
 apt-get update && apt-get install -y curl sudo openssh-server
 useradd -ms /bin/bash ansible
-passwd -d ansible
+#passwd -d ansible
+echo 'ansible:ansible' | chpasswd 
 echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 mkdir -p /var/run/sshd && mkdir -p /run/sshd 
 echo "PermitRootLogin no" >> /etc/ssh/sshd_config

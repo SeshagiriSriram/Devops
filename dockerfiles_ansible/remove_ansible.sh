@@ -8,6 +8,3 @@ docker network rm ansible
 docker system prune  --volumes -a --force 
 
 echo All done 
-
-
-

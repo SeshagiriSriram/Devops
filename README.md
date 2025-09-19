@@ -13,6 +13,7 @@ It contains scripts for installing minikube on a WSL2 (windows 11 Home Edition) 
 
 ## Change History
 
+- Sep 19 2025 - Terraform has been moved into separate repository [Terraform](https://github.com/seshagirisriram/terraform) 
 - Aug 28 2025 - Changed quite a bit in **Docker** and **Kubernetes**. Many scripts (not all) have been updated for error handling and (mostly) equivalent Windows and Unix Scripts. Many READMEs updated for readbility. Presentations moved to [Materials](https://github.com/seshagirisriram/materials) repository.
 
 - May 15 2025 - Lots of changes - Part 1 of cleanup
