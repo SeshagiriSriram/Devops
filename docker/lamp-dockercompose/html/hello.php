@@ -1,6 +1,3 @@
-
 <?php
-
-echo "Hello World - Welcome to AWS Beanstalk"
-
+echo "<h1>Welcome to simple Docker based app </h1>" 
 ?>

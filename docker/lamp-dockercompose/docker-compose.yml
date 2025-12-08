@@ -1,25 +1,29 @@
+name: lampdockercompose 
 services:
   web:
     image: php:8.2-apache    #check the php version you need for your project
+    container_name: lamp_web 
     ports:
       - "84:80"    #this line maps your pc port to the container port
     depends_on:
       - db    #this line links this container to the db container
     volumes:
-      - ${COMPOSE_PROJECT_DIR}/html:/var/www/html
+      - html-data:/var/www/html
     networks: 
       - demo
   db:
     image: mysql:8.1.0    #check the mysql version you need for your project
+    container_name: lamp_db 
     environment:
       MYSQL_ROOT_PASSWORD: root_password    #you can change the mysql root password here
       MYSQL_DATABASE: lamp_db    #you can change the database name here
     volumes:
-      - ${COMPOSE_PROJECT_DIR}/mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     networks: 
       - demo
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: lamp_phpmyadmin 
     ports:
       - "85:80"    #this line maps your pc port to the container port
     depends_on:
@@ -33,3 +37,10 @@ networks:
     driver: bridge 
     name: lampnetwork
     external: false
+volumes: 
+  mysql-data: 
+    name: mysql-data 
+    external: true
+  html-data: 
+    name: html-data 
+    external: true
