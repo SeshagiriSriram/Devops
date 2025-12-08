@@ -11,8 +11,13 @@ VM_DRIVER=${1:-"docker"}
 # TODO: Check if driver is available and valid 
 VM_FLAG="--vm-driver=${VM_DRIVER}"
 
+LP=""
+if [ "${VM_DRIVER}" = "docker" ]; then 
+    LP="--ports=8443:8443"
+fi 
+
 if [ -n "${MOUNTDIR}" ]; then
-  ARGS=("--mount" "--mount-string=\"${MOUNTDIR}:/hostmount\"")
+  ARGS=(--mount "--mount-string=${MOUNTDIR}:/hostmount")
   if [ ! -d "${MOUNTDIR}" ]; then
   	echo "Error: Specified Mount/host directory '${MOUNTDIR}' does not exist."
 	echo "Minikube cannot be started with given mount option."
@@ -26,7 +31,8 @@ if [ -n "${MOUNTDIR}" ]; then
     fi 
   fi
 fi
-ARGS+=("${VM_FLAG}" "--memory" "8192" "--cpus" "4")
+ARGS+=("${VM_FLAG}" "${LP}" "--memory" "8192" "--cpus" "4")
+#ARGS+=("${VM_FLAG}" "--memory" "5120" "--cpus" "4")
 minikube start "${ARGS[@]}"
 echo "Minikube started with args: ${ARGS[*]}"
 ./enable_addons.sh 
