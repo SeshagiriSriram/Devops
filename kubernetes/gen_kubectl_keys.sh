@@ -49,4 +49,7 @@ kubectl config set-context ${USER_NAME}-context --cluster=$CLUSTER_NAME --user=$
 kubectl config use-context ${USER_NAME}-context
 " > ${WINDIR}/install.bat 
 echo "Admin user setup complete. Switch to Windows and run '${WINDIR}'/install.bat to start using the ${USER_NAME}-context. "
-
+# clean up 
+rm ${USER_NAME}.crt
+rm ${USER_NAME}.key
+rm ${USER_NAME}.csr
