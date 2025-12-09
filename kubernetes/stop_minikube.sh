@@ -5,12 +5,12 @@ echo -n "Do you want to delete the cluster also? If yes, please enter Y or y "
 read var 
 if [ $var = "y" ] || [ $var = "Y" ]; then 
 	minikube delete  --profile ${CLUSTERNAME} 
+	if  [ -d $HOME/.minikube ] ; then 
+   		rm -rf $HOME/.minikube
+	fi 
+	if  [ -d $HOME/.kube ] ; then 
+   		rm -rf $HOME/.kube
+	fi 
 fi 
 
-if  [ -d $HOME/.minikube ] ; then 
-   rm -rf $HOME/.minikube
-fi 
-if  [ -d $HOME/.kube ] ; then 
-   rm -rf $HOME/.kube
-fi 
 
