@@ -1,6 +1,6 @@
 #!/bin/bash
 # Provided as IS - Use at own risk
-set -e  # Exit on any error
+#set -e  # Exit on any error
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S') $@"; }
 
 if ! command -v docker &> /dev/null; then
@@ -14,7 +14,10 @@ if [ ! -f Dockerfile ]; then
 else 
 	log "Dockerfile exists. OK to proceed" 
 fi 
+echo "Reached after Dockerfile check"
+
 count=$(docker network ls | grep -c jenkins) 
+
 if [ "${count}" -eq 0 ]; then 
 	log "Creating network jenkins" 
 	docker network create jenkins
@@ -23,9 +26,11 @@ else
 fi 
 
 # Create required directories. The -p flag ensures no error if they already exist 
-mkdir -p jenkins-docker-certs
-mkdir -p jenkins-data
-export JENKINS_VERSION=${JENKINS_VERSION:-2.516.2}
+#mkdir -p jenkins-docker-certs
+#mkdir -p jenkins-data
+docker volume create jenkins-docker-certs
+docker volume create jenkins-data
+export JENKINS_VERSION=${JENKINS_VERSION:-2.528.3}
 
 # Remove existing containers if present
 if docker ps -a --format '{{.Names}}' | grep -q '^jenkins-docker$'; then
@@ -51,7 +56,14 @@ docker run --name jenkins-docker \
   --publish 2378:2376 \
   docker:dind
 # Create the docker image.. 
-docker build --rm -t jenkins-blueocean:"${JENKINS_VERSION}"  .  
+IMAGE_NAME="jenkins-blueocean:${JENKINS_VERSION}"
+# Check if the image already exists
+if docker image inspect "$IMAGE_NAME" > /dev/null 2>&1; then
+    echo "Image $IMAGE_NAME already exists. Skipping build."
+else
+    echo "Image $IMAGE_NAME not found. Building..."
+    docker build --rm -t "$IMAGE_NAME" .
+fi
 
 #
 # start the Jenkins container 
