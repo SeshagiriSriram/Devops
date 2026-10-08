@@ -1,8 +1,11 @@
 @echo off
 cls 
-if not exist e:\tmp\ mkdir e:\tmp
-cd e:\tmp
-if not exist e:\tmp\.git\ git init 
+REM Save current directory
+set "OLD_DIR=%CD%"
+if not exist %~d0\tmp\ mkdir %~d0\tmp
+cd /d %~d0\tmp\
+if not exist %~d0\tmp\.git\ git init 
+
 
 dir > a.txt 
 git add a.txt 
@@ -45,5 +48,5 @@ git log --oneline --graph --decorate --all
 echo see how the graph is now non-linear
 
 set /p con=Enter any key to continue...
-cd "E:\01. Code\02. demo_code\git_sample_code"
-delrepos
+cd /d "%OLD_DIR%"
+delrepos 
